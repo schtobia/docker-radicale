@@ -15,6 +15,6 @@ fi
 if [ "$1" = 'radicale' -a "$(id -u)" = '0' ]; then
     chown -R radicale:radicale /data
     exec su-exec radicale "$@"
+else
+    exec "$@"
 fi
-
-exec "$@"
