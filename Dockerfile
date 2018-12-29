@@ -14,7 +14,10 @@ LABEL maintainer="Thomas Queste <tom@tomsquest.com>" \
       org.label-schema.vcs-url="https://github.com/tomsquest/docker-radicale" \
       org.label-schema.schema-version="1.0"
 
-RUN apk add --no-cache --virtual=build-dependencies \
+RUN \
+    apk update -U \
+    && apk upgrade \
+    && apk add --no-cache --virtual=build-dependencies \
         gcc \
         libffi-dev \
         musl-dev \
