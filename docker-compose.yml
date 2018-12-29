@@ -16,7 +16,7 @@ services:
       - "5232:5232"
     read_only: true
     volumes:
-      - data-radicale:/data
+      - data-radicale:/var/lib/radicale
 
 volumes:
   data-radicale:

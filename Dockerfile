@@ -34,16 +34,16 @@ RUN \
     && apk del --purge build-dependencies \
     && addgroup -g $GID radicale \
     && adduser -D -s /bin/false -H -u $UID -G radicale radicale \
-    && mkdir -p /config /data \
-    && chmod -R 770 /data \
-    && chown -R radicale:radicale /data
+    && mkdir -p /etc/radicale /var/lib/radicale \
+    && chmod -R 770 /var/lib/radicale \
+    && chown -R radicale:radicale /var/lib/radicale
 
-COPY config /config/config
+COPY config /etc/radicale
 
 HEALTHCHECK --interval=30s --retries=3 CMD curl --fail http://localhost:5232 || exit 1
-VOLUME /config /data
+VOLUME ["/var/lib/radicale"]
 EXPOSE 5232
 
 COPY docker-entrypoint.sh /usr/local/bin
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["radicale", "--config", "/config/config"]
+CMD ["radicale", "--config", "/etc/radicale"]
