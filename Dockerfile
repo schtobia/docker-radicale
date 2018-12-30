@@ -1,6 +1,7 @@
 FROM alpine:3.8
 
 ARG COMMIT_ID
+ARG BUILD_DATE
 ARG VERSION=2.1.11
 ARG UID=2999
 ARG GID=2999
@@ -9,6 +10,7 @@ LABEL maintainer="Thomas Queste <tom@tomsquest.com>" \
       org.label-schema.name="Radicale Docker Image" \
       org.label-schema.description="Enhanced Docker image for Radicale, the CalDAV/CardDAV server" \
       org.label-schema.url="https://github.com/Kozea/Radicale" \
+      org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.version=$VERSION \
       org.label-schema.vcs-ref=$COMMIT_ID \
       org.label-schema.vcs-url="https://github.com/tomsquest/docker-radicale" \

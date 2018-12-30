@@ -12,6 +12,7 @@ services:
         - alpine:3.8
       args:
         - COMMIT_ID
+        - BUILD_DATE
     ports:
       - "5232:5232"
     read_only: true
