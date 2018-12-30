@@ -6,6 +6,12 @@ version: '3.3'
 services:
   radicale:
     image: tomsquest/docker-radicale
+    build:
+      context: .
+      cache_from:
+        - alpine:3.8
+      args:
+        - COMMIT_ID
     ports:
       - "5232:5232"
     read_only: true
